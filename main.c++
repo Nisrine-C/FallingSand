@@ -5,8 +5,8 @@
 
 using namespace std;
 
-#define WIDTH 800 
-#define HEIGHT 600 
+#define WIDTH 960 
+#define HEIGHT 540
 #define PIXEL 5
 #define ROWS HEIGHT/PIXEL
 #define COLS WIDTH/PIXEL
