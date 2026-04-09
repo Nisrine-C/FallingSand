@@ -2,7 +2,7 @@
 
 This is a small project I built using **C++** and **Raylib**. A "falling sand" simulation where you can click around and watch colored grains of sand pile up and slide around in real-time.
 
-[![Watch the video]](https://raw.githubusercontent.com/yourusername/yourrepository/main/assets/thumbnail.jpg)
+<video src="fallingSand.mp4" width="600" controls></video>
 
 ## How it works
 I used a **Particle Class** and a **Vector** to keep track of the sand. 
