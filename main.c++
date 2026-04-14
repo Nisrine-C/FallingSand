@@ -9,8 +9,9 @@ using namespace std;
 #define WIDTH 960 
 #define HEIGHT 540
 #define PIXEL 5
-#define OFFSET 10
-#define ROWS (HEIGHT/PIXEL)-OFFSET
+#define OFFSET 1
+#define MENU 9
+#define ROWS (HEIGHT/PIXEL)-(OFFSET + MENU)
 #define COLS (WIDTH/PIXEL)-OFFSET
 #define SATURATION 0.8f
 #define VALUE 0.8f
@@ -172,13 +173,11 @@ vector<Particle*> nextActive() {
         bool moved = false;
         int dir = (GetRandomValue(0, 1) == 0) ? 1 : -1;
 
-        // Sub-stepping for speed/acceleration
         for (int i = 0; i < p->speed; ++i) {
             int x = p->x;
             int y = p->y;
             if (y >= ROWS - 1) break;
 
-            // 1. STRAIGHT DOWN (Including Sand sinking into Water)
             Particle* below = scene[y + 1][x];
             if (below == nullptr || (p->type == SAND && below->type == WATER)) {
                 if (below != nullptr && below->type == WATER) {
@@ -195,7 +194,6 @@ vector<Particle*> nextActive() {
                 }
                 moved = true;
             } 
-            // 2. DIAGONALS (Including Sand sinking)
             else if (x + dir >= 0 && x + dir < COLS && 
                     (scene[y + 1][x + dir] == nullptr || (p->type == SAND && scene[y + 1][x + dir]->type == WATER))) {
                 Particle* diag = scene[y + 1][x + dir];
@@ -212,7 +210,6 @@ vector<Particle*> nextActive() {
                 }
                 moved = true;
             }
-            // 3. WATER SIDEWAYS FLOW
             else if (p->type == WATER) {
                 if (x + dir >= 0 && x + dir < COLS && scene[y][x + dir] == nullptr) {
                     scene[y][x] = nullptr;
