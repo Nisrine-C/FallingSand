@@ -24,7 +24,7 @@ make
 ```
 
 ## To-Do List
-* [ ] Add different materials (water or stone?).
+* [x] Add different materials (water or stone?).
 * [ ] Add an eraser.
 * [ ] Make it handle even more particles without lagging. 
 
